@@ -1,11 +1,9 @@
 from io import BytesIO
-from flask_ngrok import run_with_ngrok
 
 from flask import Flask, send_file
 import sdqrcode
 
 app = Flask(__name__)
-run_with_ngrok(app)
 
 # init with a default config
 generator = sdqrcode.init(config="default_diffusers")

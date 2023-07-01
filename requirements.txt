@@ -6,7 +6,6 @@ click==8.1.3
 diffusers @ git+https://github.com/huggingface/diffusers@174dcd697faf88370f1e7b2eeabb059dd8f1b2f4
 filelock==3.12.2
 Flask==2.3.2
-flask-ngrok==0.0.25
 fsspec==2023.6.0
 huggingface-hub==0.15.1
 idna==3.4
