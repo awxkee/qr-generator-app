@@ -4,3 +4,4 @@
 venv/
 docx/
 pdfs/
+.DS_Store
