@@ -16,13 +16,13 @@ def hello_world():  # put application's code here
 
 @app.route('/qr', methods=["POST", "GET"])
 def get_qr():
-    prompt = ''
     if request.method == 'POST':
         payload = request.json
         prompt = payload['prompt']
     elif request.method == 'GET':
         prompt = request.args.get('prompt')
-
+    else:
+        prompt = 'A beautiful winter landscape'
     images = generator.generate_sd_qrcode(
         prompt=prompt,
         steps=30,
