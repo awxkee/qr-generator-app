@@ -1,6 +1,6 @@
 from io import BytesIO
 
-from flask import Flask, send_file
+from flask import Flask, send_file, request
 import sdqrcode
 
 app = Flask(__name__)
@@ -14,10 +14,17 @@ def hello_world():  # put application's code here
     return 'Hello World!'
 
 
-@app.route('/qr')
-def get_qr(pid):
+@app.route('/qr', methods=["POST", "GET"])
+def get_qr():
+    prompt = ''
+    if request.method == 'POST':
+        payload = request.json
+        prompt = payload['prompt']
+    elif request.method == 'GET':
+        prompt = request.args.get('prompt')
+
     images = generator.generate_sd_qrcode(
-        prompt="A beautiful minecraft landscape",
+        prompt=prompt,
         steps=30,
         cfg_scale=7,
         width=768,
