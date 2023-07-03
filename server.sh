@@ -1,1 +1,1 @@
-PROD=true gunicorn app:app -w 4 --bind 0.0.0.0:5000 --daemon
+PROD=true gunicorn app:app -w 1 --bind 0.0.0.0:5000 --daemon
