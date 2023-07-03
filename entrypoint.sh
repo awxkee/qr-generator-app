@@ -1,1 +1,1 @@
-python3 app.py
+PROD=true python3 app.py

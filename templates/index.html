@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block container %}
+    <script type="text/javascript">
+        function generateQR() {
+            fetch('/qr', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    prompt: document.getElementById('prompt').value,
+                    qr_contents: document.getElementById('qr_contents').value
+                })
+            })
+                .then((res) => res.blob())
+                .then((imageBlob) => {
+                    const imageObjectURL = URL.createObjectURL(imageBlob);
+
+                    const image = document.createElement('img')
+                    image.src = imageObjectURL
+                    image.style.padding = '12px'
+
+                    const container = document.getElementById("image_container")
+                    container.append(image)
+                });
+        }
+    </script>
+    <div class="main">
+        <div style="margin-top: 16px">
+            <label for="prompt">Prompt</label>
+            <input type="text" id="prompt" name="prompt" style="width: 350px"
+                   value="A beautiful winter landscape"><br><br>
+        </div>
+        <div>
+            <label for="qr_contents">QR Contents</label>
+            <input type="text" id="qr_contents" name="qr_contents" style="width: 350px" value="Radzivon"><br><br>
+        </div>
+        <button id="generate" onclick="generateQR()">Generate</button>
+        <div id="image_container" style="padding-top: 16px"></div>
+    </div>
+{% endblock %}
