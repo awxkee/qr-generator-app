@@ -48,7 +48,8 @@ def get_qr():
         print(f'length of generated codes: {len(images)}')
         img_io = BytesIO()
         images[0].save(img_io, 'PNG', quality=100)
-        return send_file(images[0], mimetype='image/png')
+        img_io.seek(0)
+        return send_file(img_io, mimetype='image/png')
     else:
         with open('static/test.jpg', "rb") as fh:
             buf = BytesIO(fh.read())
