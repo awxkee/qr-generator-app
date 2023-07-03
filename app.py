@@ -85,17 +85,7 @@ def get_qr():
         else:
             images = imgGenerator.generate_sd_qrcode(
                 input_image=pil_image,
-                steps=17,
-                cfg_scale=7,
-                width=768,
-                height=768,
-                seed=-1,
                 qrcode_text=qr_contents,
-                qrcode_error_correction="high",
-                qrcode_box_size=10,
-                qrcode_border=4,
-                qrcode_fill_color="black",
-                qrcode_back_color="white",
             )
         print(f'length of generated codes: {len(images)}')
         img_io = BytesIO()
