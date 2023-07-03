@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 if os.environ.get('PROD') is not None:
     generator = sdqrcode.init(config="default_diffusers")
+    imgGenerator = sdqrcode.init(config="./config/img2.yml")
 
 def resize_image_aspect_fit(image, target_size):
     # Get the original size of the image
@@ -82,8 +83,7 @@ def get_qr():
                 qrcode_back_color="white",
             )
         else:
-            images = generator.generate_sd_qrcode(
-                mode='img2img',
+            images = imgGenerator.generate_sd_qrcode(
                 input_image=pil_image,
                 steps=17,
                 cfg_scale=7,
