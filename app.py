@@ -90,9 +90,6 @@ def get_qr():
                 width=768,
                 height=768,
                 seed=-1,
-                controlnet_weights=[0.35, 0.65],  # [weight_cn_1, weight_cn_2, ...]
-                controlnet_startstops=[(0, 1), (0.35, 0.7)],
-                # [(start_cn_1, end_cn_1), ... ]. (0.35, 0.7) means apply CN after 35% of total steps until 70% of total steps
                 qrcode_text=qr_contents,
                 qrcode_error_correction="high",
                 qrcode_box_size=10,
