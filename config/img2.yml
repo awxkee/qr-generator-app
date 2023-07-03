@@ -12,10 +12,18 @@ global:
   input_image: qrcode
 
 controlnet_units:
+  brightness:
+    model: ioclab/control_v1p_sd15_brightness
+    cn_input_image: qrcode
+    module: none #not implemented yet
+    weight: 0.35
+    start: 0.0
+    end: 1.0
+
   tile:
     model: lllyasviel/control_v11f1e_sd15_tile
+    module: none #not implemented yet
     cn_input_image: qrcode
-    module: none
     weight: 0.5
     start: 0.35
     end: 0.70
