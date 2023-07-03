@@ -66,7 +66,7 @@ def get_qr():
         if use_prompt_generator:
             images = generator.generate_sd_qrcode(
                 prompt=prompt,
-                steps=22,
+                steps=25,
                 cfg_scale=7,
                 width=768,
                 height=768,
