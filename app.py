@@ -26,7 +26,7 @@ def resize_image_aspect_fit(image, target_size):
         new_size = (int(target_size[1] * aspect_ratio), target_size[1])
 
     # Resize the image using the calculated size
-    image.thumbnail(new_size, Image.LANCZOS)
+    image.thumbnail(target_size, Image.LANCZOS)
 
     # Create a new blank image with the target size
     resized_image = Image.new('RGB', target_size, (255, 255, 255))
