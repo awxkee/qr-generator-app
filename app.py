@@ -8,8 +8,9 @@ import sdqrcode
 app = Flask(__name__)
 
 if os.environ.get('PROD') is not None:
-    generator = sdqrcode.init(config="default_diffusers")
-    # imgGenerator = sdqrcode.init(config="./config/img2.yml")
+    # generator = sdqrcode.init(config="default_diffusers")
+    imgGenerator = sdqrcode.init(config="./config/img2.yml")
+
 
 def resize_image_aspect_fit(image, target_size):
     # Get the original size of the image
@@ -38,6 +39,7 @@ def resize_image_aspect_fit(image, target_size):
     resized_image.paste(image, position)
 
     return resized_image
+
 
 @app.route('/')
 def home():  # put application's code here

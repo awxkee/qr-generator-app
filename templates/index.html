@@ -4,14 +4,14 @@
     <script type="text/javascript">
         function generateQR() {
             const formData = new FormData();
-            /*formData.append('qr_contents', document.getElementById('qr_contents').value)
+            formData.append('qr_contents', document.getElementById('qr_contents').value)
             const fileInput = document.getElementById('file_picker');
             if (fileInput.files && fileInput.files.length > 0) {
                 formData.append('file', fileInput.files[0])
             } else {
                 formData.append('prompt', document.getElementById('prompt').value);
-            }*/
-              formData.append('prompt', document.getElementById('prompt').value);
+            }
+              {#formData.append('prompt', document.getElementById('prompt').value);#}
             fetch('/qr', {
                 method: 'POST',
                 headers: {
