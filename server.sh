@@ -1,1 +1,1 @@
-gunicorn app:app -w 4 --daemon
+gunicorn app:app -w 4 --bind 0.0.0.0:5000 --daemon
