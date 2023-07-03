@@ -45,7 +45,7 @@ def get_qr():
             qrcode_fill_color="black",
             qrcode_back_color="white",
         )
-        print(f'length of generated codes: {images.count()}')
+        print(f'length of generated codes: {len(images)}')
         img_io = BytesIO()
         images[0].save(img_io, 'PNG', quality=100)
         return send_file(img_io, mimetype='image/png')
