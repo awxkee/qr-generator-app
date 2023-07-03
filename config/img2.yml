@@ -15,7 +15,7 @@ global:
 
 controlnet_units:
   tile:
-    model: lllyasviel/control_v11f1e_sd15_tile
+    model: control_v11f1e_sd15_tile [a371b31b]
     cn_input_image: qrcode
     module: none
     weight: 0.5
