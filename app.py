@@ -83,6 +83,7 @@ def get_qr():
             )
         else:
             images = generator.generate_sd_qrcode(
+                mode='img2img',
                 input_image=pil_image,
                 steps=17,
                 cfg_scale=7,
