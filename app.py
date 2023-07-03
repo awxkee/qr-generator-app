@@ -43,26 +43,26 @@ def home():  # put application's code here
     return render_template('index.html')
 
 
-@app.route('/qr', methods=["POST", "GET"])
+@app.route('/qr', methods=["POST"])
 def get_qr():
-    if os.environ.get('PROD') is not None:
-        use_prompt_generator = False
-        if request.method == 'POST':
-            payload = request.form
-            prompt = payload['prompt']
-            if prompt is not None:
-                use_prompt_generator = True
-            else:
-                file = request.files['file']
-                pil_image = Image.open(file)
-                use_prompt_generator = False
-            qr_contents = payload['qr_contents']
-        elif request.method == 'GET':
-            prompt = request.args.get('prompt')
-            qr_contents = request.args.get('qr_contents')
+    use_prompt_generator = False
+    if request.method == 'POST':
+        payload = request.form
+        prompt = payload.get('prompt')
+        qr_contents = payload.get('qr_contents')
+        if prompt is not None:
+            use_prompt_generator = True
         else:
-            prompt = 'A beautiful winter landscape'
-            qr_contents = 'Radzivon'
+            file = request.files['file']
+            pil_image = resize_image_aspect_fit(Image.open(file), [768, 768])
+            use_prompt_generator = False
+    elif request.method == 'GET':
+        prompt = request.args.get('prompt')
+        qr_contents = request.args.get('qr_contents')
+    else:
+        prompt = 'A beautiful winter landscape'
+        qr_contents = 'Radzivon'
+    if os.environ.get('PROD') is not None:
         if use_prompt_generator:
             images = generator.generate_sd_qrcode(
                 prompt=prompt,
@@ -83,7 +83,7 @@ def get_qr():
             )
         else:
             images = generator.generate_sd_qrcode(
-                input_image=resize_image_aspect_fit(pil_image, 768),
+                input_image=pil_image,
                 steps=17,
                 cfg_scale=7,
                 width=768,

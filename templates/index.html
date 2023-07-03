@@ -12,10 +12,9 @@
                 formData.append('prompt', document.getElementById('prompt').value);
             }
             fetch('/qr', {
-                method: 'post',
+                method: 'POST',
                 headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-Type': 'application/json'
+                    'Accept': '*/*',
                 },
                 body: formData
             })
