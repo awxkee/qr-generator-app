@@ -4,14 +4,10 @@ global:
   negative_prompt: "ugly"
   model_name_or_path: "SG161222/Realistic_Vision_V2.0"
   steps: 20
-  scheduler_name: Euler a
-  cfg_scale: 7
   width: 768
   height: 768
   seed: -1
-  batch_size: 1
   input_image: qrcode
-  denoising_strength: 0.7
 
 controlnet_units:
   - brightness:
