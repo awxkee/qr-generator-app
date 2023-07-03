@@ -1,0 +1,1 @@
+gunicorn app:app -w 4 --daemon
