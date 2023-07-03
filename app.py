@@ -30,7 +30,7 @@ def get_qr():
             qr_contents = 'Radzivon'
         images = generator.generate_sd_qrcode(
             prompt=prompt,
-            steps=30,
+            steps=12,
             cfg_scale=7,
             width=768,
             height=768,
@@ -48,7 +48,7 @@ def get_qr():
         print(f'length of generated codes: {len(images)}')
         img_io = BytesIO()
         images[0].save(img_io, 'PNG', quality=100)
-        return send_file(img_io, mimetype='image/png')
+        return send_file(images[0], mimetype='image/png')
     else:
         with open('static/test.jpg', "rb") as fh:
             buf = BytesIO(fh.read())
